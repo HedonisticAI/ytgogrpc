@@ -2,21 +2,24 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
-	var s string
-	fmt.Printf("\nUsage: enter exit to exit, enter link to download")
-	for s != "exit" {
-		fmt.Printf("\nEnter Youtube Url or exit: ")
-		fmt.Scanf("%s ", &s)
+		var s string
+		CreateFolder("pic")
+		checkErr(err)
+		fmt.Printf("Enter Youtube Url or urls separated by ',':")
+		fmt.Scanln(&s)
+		var urls = strings.Split(s, ",")
+		for i:=0; i < len(urls); i++ {
+			//fmt.Println(urls[i])
 
-	}
-
+		}
 }
 
-/*func checkErr(err error) {
+func checkErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-}*/
+}

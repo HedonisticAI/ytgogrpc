@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ytgo;
+
+service Reverse {
+    rpc Do(Request) returns (Response) {}
+}
+
+message Request {
+    string message = 1;
+}
+
+message Response {
+   repeated bytes image = 1;
+}
