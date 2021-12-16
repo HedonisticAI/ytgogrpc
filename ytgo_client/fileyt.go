@@ -3,6 +3,9 @@ package main
 import (
 	"os"
 	"errors"
+	"log"
+	"math/rand"
+	"time"
 )
 func CreateFolder(pic string) error {
 
@@ -14,10 +17,19 @@ func CreateFolder(pic string) error {
 	return nil
 }
 
-func createFile(thumbnailsName string) (*os.File, error) {
+func t_rand() string {
+	var letter string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+	rand.Seed(time.Now().UnixNano())
+	b := make([]byte, 10)
+	for i := range b {
+		b[i] = letter[rand.Intn(len(letter))]
+	}
+	return string(b)
+}
 
-	// create file with auto set in the name's last number
-	createdFile, err := os.Create(thumbnailsName)
+func CreateFile(Name string) (*os.File, error) {
+
+	createdFile, err := os.Create(Name)
 	if err != nil {
 		log.Println(err)
 		return nil, errors.New("Can't create file")
@@ -25,3 +37,5 @@ func createFile(thumbnailsName string) (*os.File, error) {
 
 	return createdFile, nil
 }
+
+
