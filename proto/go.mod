@@ -2,6 +2,8 @@ module proto
 
 go 1.17
 
+replace ytgogprs = github.com/HedonisticAI/ytgogrps
+
 require (
 	github.com/golang/protobuf v1.5.2
 	google.golang.org/grpc v1.43.0
