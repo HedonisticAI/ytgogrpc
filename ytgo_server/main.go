@@ -7,7 +7,7 @@ import (
     "golang.org/x/net/context"
     "google.golang.org/grpc"
     "google.golang.org/grpc/grpclog"
-	//"os"
+	"os"
 	"strings"
 )
 var in_mem map[string][]byte
@@ -61,17 +61,12 @@ func (s *server) Do(c context.Context, request *pb.Request)(response *pb.Respons
 				return response , nil
 			}
 			if (mod == "--async"){
-				ans = downloadMultipleFiles(str)
+				ans,_ = downloadMultipleFiles(str)
 				response = &pb.Response{
 					Image: ans,
 				}
 				return response , nil
 			}
-			}
-
-
-
-
 			return nil, nil
-	}
+			}
 		
