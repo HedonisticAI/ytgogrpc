@@ -8,29 +8,7 @@ import (
 	"bytes"
 )
 
-// getUrlResponse get and check image url with two resolutions.
-// If "/maxresdefault.jpg" have a bad response or doesn't exist
-// getURLResponse try to get url with lowest or only resolution "/hqdefault.jpg".
-
-
-/*func () downloadFile(string ID)  {
-
-	// two possible resolutions
-	
-
-	resp, err := http.Get(vi + ID + resMax)
-
-	if err != nil {
-
-		resp, err = http.Get(vi + t.VideoID + resHQ)
-		if err != nil || resp.StatusCode != 200 {
-			log.Printf("Response Status Code: %v\n", resp.StatusCode)
-			return nil
-		}
-		return 
-	}
-	return resp
-}*/
+ 
 func downloadMultipleFiles(urls []string) ([][]byte, error) {
 	done := make(chan []byte, len(urls))
 	errch := make(chan error, len(urls))

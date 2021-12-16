@@ -11,15 +11,9 @@ import (
 	"strings"
 )
 var in_mem map[string][]byte
-
-
+var mod string = os.Args[1]
 
 func main() {
-
-	/*var mod bool = false
-	if(os.Args[1]) == "--async"{
-		mod = true
-	}*/
 	in_mem = make(map[string][]byte)
     listener, err := net.Listen("tcp", ":5300")
 
@@ -66,6 +60,18 @@ func (s *server) Do(c context.Context, request *pb.Request)(response *pb.Respons
 				}
 				return response , nil
 			}
+			if (mod == "--async"){
+				ans = downloadMultipleFiles(str)
+				response = &pb.Response{
+					Image: ans,
+				}
+				return response , nil
+			}
+			}
+
+
+
+
 			return nil, nil
 	}
 		
